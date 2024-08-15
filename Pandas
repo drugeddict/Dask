@@ -1,0 +1,11 @@
+import pandas as pd
+import dask.dataframe as dd
+
+# Чтение CSV-файла с помощью Dask для обработки больших данных
+df = dd.read_csv('large_dataset.csv')
+
+# Пример обработки: группировка и агрегация данных
+result = df.groupby('category').price.mean().compute()
+
+# Сохранение результата
+result.to_csv('result.csv')
